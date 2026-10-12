@@ -1,0 +1,12 @@
+[
+  { "code": "USD", "name": "US Dollar", "country_code": "US" },
+  { "code": "NGN", "name": "Nigerian Naira", "country_code": "NG" },
+  { "code": "KES", "name": "Kenyan Shilling", "country_code": "KE" },
+  { "code": "XOF", "name": "West African Franc", "country_code": "CI" },
+  { "code": "VND", "name": "Vietnamese Dong", "country_code": "VN" },
+  { "code": "PHP", "name": "Philippine Peso", "country_code": "PH" },
+  { "code": "KHR", "name": "Cambodian Riel", "country_code": "KH" },
+  { "code": "THB", "name": "Thai Baht", "country_code": "TH" },
+  { "code": "BRL", "name": "Brazilian Real", "country_code": "BR" },
+  { "code": "ARS", "name": "Argentine Peso", "country_code": "AR" }
+]

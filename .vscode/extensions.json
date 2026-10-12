@@ -1,0 +1,9 @@
+{
+  "//": "The Hermes attach config needs the React Native Tools extension (msjsdiag.vscode-react-native). [STG] OBKM's device picker needs Tasks Shell Input (augustocdias.tasks-shell-input).",
+  "recommendations": [
+    "msjsdiag.vscode-react-native",
+    "augustocdias.tasks-shell-input",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}

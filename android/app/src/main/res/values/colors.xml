@@ -1,0 +1,69 @@
+<resources>
+    <color name="bootsplash_background">#0d5aaa</color>
+    <color name="window_background">#F7F8FA</color>
+    <color name="notification_accent">#6172F3</color>
+
+    <color name="circlepw_background">#0D0F11</color>
+    <color name="circlepw_divider">#252A30</color>
+    <color name="circlepw_success">#0B9C4A</color>
+    <color name="circlepw_error">#FF6584</color>
+    <color name="circlepw_error_background">#1C2126</color>
+    <color name="circlepw_security_confirm_main_bg">#1C2126</color>
+    <color name="circlepw_interactive_bg">#0D0F11</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="circlepw_text_main">#FFFFFF</color>
+    <color name="circlepw_text_main2">#FFFFFF</color>
+    <color name="circlepw_text_auxiliary">#9E9FA0</color>
+    <color name="circlepw_text_auxiliary2">#9E9FA0</color>
+    <color name="circlepw_text_action">#6172F3</color>
+    <color name="circlepw_text_action_pressed">#B36172F3</color>
+    <color name="circlepw_placeholder">#9E9FA0</color>
+    <color name="circlepw_text_summary">#FFFFFF</color>
+    <color name="circlepw_text_summary_highlight">#6172F3</color>
+    <color name="circlepw_text_prompt">#FFFFFF</color>
+    <color name="circlepw_text_prompt_highlight">#6172F3</color>
+    <color name="circlepw_text_exchange">#9E9FA0</color>
+    <color name="circlepw_text_sign_url">#9E9FA0</color>
+    <color name="circlepw_text_interactive">#6172F3</color>
+    <color name="circlepw_tip_text">#FFFFFF</color>
+
+    <color name="circlepw_main_bt_text">#000000</color>
+    <color name="circlepw_main_bt_background">#FCFCFD</color>
+    <color name="circlepw_main_bt_text_pressed">#000000</color>
+    <color name="circlepw_main_bt_background_pressed">#E5E5E5</color>
+    <color name="circlepw_disabled_main_bt_text">#9E9FA0</color>
+    <color name="circlepw_disabled_main_bt_background">#252A30</color>
+
+    <color name="circlepw_second_bt_text">#FCFCFD</color>
+    <color name="circlepw_second_bt_border">#FCFCFD</color>
+    <color name="circlepw_second_bt_background">#161A1E</color>
+    <color name="circlepw_second_bt_background_pressed">#252A30</color>
+    <color name="circlepw_plain_bt_text">#FCFCFD</color>
+    <color name="circlepw_plain_bt_background">#161A1E</color>
+    <color name="circlepw_plain_bt_background_pressed">#252A30</color>
+
+    <color name="circlepw_pin_dot_base">#161A1E</color>
+    <color name="circlepw_pin_dot_base_boarder">#252A30</color>
+    <color name="circlepw_pin_dot_activated">#6172F3</color>
+    <color name="circlepw_pin_dot_focused_boarder">#6172F3</color>
+
+    <color name="circlepw_input_boarder">#252A30</color>
+    <color name="circlepw_input_boarder_focused">#6172F3</color>
+    <color name="circlepw_input_boarder_focused_shadow">#00000000</color>
+    <color name="circlepw_disabled_input_background">#161A1E</color>
+
+    <color name="circlepw_tag_text">#FFFFFF</color>
+    <color name="circlepw_tag_background">#1C2126</color>
+    <color name="circlepw_tag_following_text">#6172F3</color>
+    <color name="circlepw_transaction_request_fee_tip_bg">#29233B</color>
+    <color name="circlepw_otp_head_text">#FFFFFF</color>
+    <color name="circlepw_otp_hint_text">#9E9FA0</color>
+    <color name="circlepw_otp_action_text">#6172F3</color>
+    <color name="circlepw_swipe_bt_main_background">#6172F3</color>
+
+    <color name="pw_background">#0D0F11</color>
+    <color name="pw_main">#6172F3</color>
+    <color name="pw_text_primary">#FFFFFF</color>
+    <color name="pw_text_secondary">#9E9FA0</color>
+</resources>

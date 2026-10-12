@@ -1,0 +1,118 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "owego: android device",
+      "type": "shell",
+      "command": "scripts/dev/ensure-android-device.sh",
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": { "reveal": "silent", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "owego: metro [STG]",
+      "type": "shell",
+      "command": "scripts/dev/metro.sh staging",
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": {
+        "owner": "owego-metro",
+        "pattern": [
+          { "regexp": "^(__never__)(__never__)(__never__)$", "file": 1, "line": 2, "message": 3 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*(Metro on \\.env|Starting Metro|Welcome to Metro).*",
+          "endsPattern": ".*Dev server ready.*"
+        }
+      }
+    },
+    {
+      "label": "owego: metro [PROD]",
+      "type": "shell",
+      "command": "scripts/dev/metro.sh production",
+      "options": { "cwd": "${workspaceFolder}" },
+      "isBackground": true,
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": {
+        "owner": "owego-metro",
+        "pattern": [
+          { "regexp": "^(__never__)(__never__)(__never__)$", "file": 1, "line": 2, "message": 3 }
+        ],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".*(Metro on \\.env|Starting Metro|Welcome to Metro).*",
+          "endsPattern": ".*Dev server ready.*"
+        }
+      }
+    },
+
+    {
+      "label": "owego: build [STG] RN Android",
+      "type": "shell",
+      "command": "scripts/dev/run-android.sh staging",
+      "options": { "cwd": "${workspaceFolder}" },
+      "dependsOrder": "sequence",
+      "dependsOn": ["owego: android device", "owego: metro [STG]"],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "owego: build [STG] RN iOS",
+      "type": "shell",
+      "command": "scripts/dev/run-ios.sh staging",
+      "options": { "cwd": "${workspaceFolder}" },
+      "dependsOrder": "sequence",
+      "dependsOn": ["owego: metro [STG]"],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "owego: build [PROD] RN Android",
+      "type": "shell",
+      "command": "scripts/dev/run-android.sh production",
+      "options": { "cwd": "${workspaceFolder}" },
+      "dependsOrder": "sequence",
+      "dependsOn": ["owego: android device", "owego: metro [PROD]"],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    },
+
+    {
+      "label": "owego: pick device [STG] OBKM",
+      "type": "shell",
+      "command": "echo",
+      "args": ["Device: ${input:owegoDevice}"],
+      "presentation": { "reveal": "silent", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    },
+    {
+      "label": "owego: run [STG] OBKM",
+      "type": "shell",
+      "command": "scripts/dev/run-on-device.sh",
+      "args": ["staging", "${input:owegoDevice}"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "dependsOrder": "sequence",
+      "dependsOn": ["owego: pick device [STG] OBKM", "owego: metro [STG]"],
+      "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "owegoDevice",
+      "type": "command",
+      "command": "shellCommand.execute",
+      "args": {
+        "command": "${workspaceFolder}/scripts/dev/list-devices.sh",
+        "cwd": "${workspaceFolder}",
+        "fieldSeparator": "|",
+        "description": "Select a device for [STG] OBKM",
+        "rememberPrevious": true,
+        "taskId": "owegoDevice"
+      }
+    }
+  ]
+}

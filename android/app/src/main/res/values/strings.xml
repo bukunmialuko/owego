@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">owego</string>
+    <string name="notification_channel_name">Account activity</string>
+</resources>

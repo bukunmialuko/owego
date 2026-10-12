@@ -1,0 +1,32 @@
+Copyright (c) 2026 Owego. All rights reserved.
+
+This repository is published so that it can be reviewed as a hackathon
+submission. It is not open source software.
+
+Permission is granted to any person to view the source code in this repository
+and to build and run it locally, solely for the purpose of evaluating the
+submission.
+
+No other rights are granted. Without prior written permission from Owego, you
+may not:
+
+  - copy or reproduce the software, in whole or in part, beyond what the
+    evaluation described above requires;
+  - modify it or create derivative works from it;
+  - distribute, publish, sublicense or sell it; or
+  - use it, or any part of it, in a product or service, whether commercial
+    or not.
+
+The Owego name, logo and brand assets are not licensed for any use.
+
+Third-party components included in this repository remain under their own
+licenses, including the fonts in assets/fonts (see the OFL.txt beside them).
+
+To request permission, contact: [FILL-IN: contact email]
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

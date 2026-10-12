@@ -1,0 +1,65 @@
+buildscript {
+    ext {
+        buildToolsVersion = "37.0.0"
+        minSdkVersion = 24
+        compileSdkVersion = 37
+        targetSdkVersion = 36
+        ndkVersion = "27.1.12297006"
+        kotlinVersion = "2.2.0"
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("com.google.gms:google-services:4.5.0")
+    }
+}
+
+def circlefinProps = new Properties()
+def circlefinPropsFile = rootProject.file('circlefin-maven.properties')
+if (circlefinPropsFile.exists()) {
+    circlefinPropsFile.withReader('UTF-8') { circlefinProps.load(it) }
+}
+
+def pwsdkUrl = System.getenv('XXXXX_MAVEN_URL') ?: circlefinProps.getProperty('XXXXX_MAVEN_URL')
+if (!pwsdkUrl?.trim()) {
+    throw new GradleException(
+        "XXXXX_MAVEN_URL is not set, so the Circle Programmable Wallet SDK cannot be resolved. " +
+        "Set XXXXX_MAVEN_URL / PWSDK_MAVEN_USERNAME / XXXXX_MAVEN_PASSWORD in the environment, " +
+        "or copy android/circlefin-maven.properties.example to android/circlefin-maven.properties " +
+        "and fill it in. The password is a GitHub PAT with read:packages. See docs/installation.md."
+    )
+}
+
+allprojects {
+    repositories {
+        maven {
+            url "https://raw.githubusercontent.com/didit-protocol/sdk-android/main/repository"
+            content { includeGroup "me.didit" }
+        }
+        maven {
+            url pwsdkUrl
+            credentials {
+                username System.getenv('XXXXX_MAVEN_USERNAME') ?: circlefinProps.getProperty('XXXXX_MAVEN_USERNAME') ?: ''
+                password System.getenv('XXXXX_MAVEN_PASSWORD') ?: circlefinProps.getProperty('XXXXX_MAVEN_PASSWORD') ?: ''
+            }
+            content { includeGroup "circle.programmablewallet" }
+        }
+    }
+
+    configurations.configureEach {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.facebook.android' && details.requested.name == 'facebook-login') {
+                details.useVersion '18.3.0'
+                details.because 'circle.programmablewallet:sdk:1.0.1102 asks for latest.release'
+            }
+        }
+    }
+}
+
+apply plugin: "expo-root-project"
+apply plugin: "com.facebook.react.rootproject"

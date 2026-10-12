@@ -1,0 +1,38 @@
+name: Verify
+
+on:
+  pull_request:
+    branches: ['release/v2.0.x']
+  workflow_call:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: verify-${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run verify
+
+      - name: Coverage thresholds
+        run: npm run test:coverage
+
+      - name: Dead code
+        run: npm run knip
+
+      - name: Shellcheck the release scripts
+        uses: ludeeus/action-shellcheck@2.0.0
+        env:
+          SHELLCHECK_OPTS: -x
+        with:
+          scandir: ./scripts

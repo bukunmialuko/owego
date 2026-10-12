@@ -1,0 +1,25 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "App.tsx",
+    "src/navigation/**/*.{ts,tsx}",
+    "src/test/**/*.{ts,tsx}",
+    "*.config.js",
+    "src/shared/ui/index.ts",
+    "src/core/design-system/index.ts"
+  ],
+  "project": ["src/**/*.{ts,tsx}"],
+  "ignoreDependencies": [
+    "@env",
+    "@d11/react-native-fast-image",
+    "@hookform/resolvers",
+    "@react-native-community/netinfo",
+    "react-hook-form",
+    "@types/qrcode",
+    "expo-updates",
+    "prop-types"
+  ],
+  "ignoreBinaries": ["dot"],
+  "ignoreUnresolved": ["babel-jest"],
+  "tags": ["-public"]
+}

@@ -1,0 +1,17 @@
+[
+  {
+    "key": "BASE",
+    "blockchain": "BASE-SEPOLIA",
+    "enabled": true
+  },
+  {
+    "key": "MONAD",
+    "blockchain": "MONAD-TESTNET",
+    "enabled": true
+  },
+  {
+    "key": "ARC",
+    "blockchain": "ARC-TESTNET",
+    "enabled": true
+  }
+]

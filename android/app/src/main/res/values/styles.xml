@@ -1,0 +1,109 @@
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="BootTheme" parent="Theme.BootSplash">
+        <item name="bootSplashBackground">@color/bootsplash_background</item>
+        <item name="bootSplashLogo">@drawable/bootsplash_logo</item>
+        <item name="postBootSplashTheme">@style/AppTheme</item>
+    </style>
+
+    <style name="CircleWalletAppCompatTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/circlepw_background</item>
+        <item name="android:colorBackground">@color/circlepw_background</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="colorPrimary">@color/circlepw_background</item>
+        <item name="colorAccent">@color/circlepw_text_action</item>
+    </style>
+
+    <style name="PWSdk.Theme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@color/circlepw_background</item>
+        <item name="android:colorBackground">@color/circlepw_background</item>
+
+        <item name="colorPrimary">@color/circlepw_main_bt_background</item>
+        <item name="colorPrimaryDark">@color/circlepw_background</item>
+        <item name="colorAccent">@color/circlepw_text_action</item>
+
+        <item name="android:textColorPrimary">@color/circlepw_text_main</item>
+        <item name="android:textColorSecondary">@color/circlepw_text_auxiliary</item>
+        <item name="android:fontFamily">@font/geist_regular</item>
+
+        <item name="colorControlNormal">@color/circlepw_divider</item>
+        <item name="colorControlActivated">@color/circlepw_text_action</item>
+        <item name="colorControlHighlight">@color/circlepw_text_action</item>
+    </style>
+
+    <style name="circlepw_heading3">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/geist_bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="circlepw_heading4">
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/geist_bold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="circlepw_heading5">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/geist_semibold</item>
+    </style>
+    <style name="circlepw_body1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/geist_regular</item>
+    </style>
+    <style name="circlepw_body2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/geist_regular</item>
+    </style>
+    <style name="circlepw_caption1">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/geist_regular</item>
+    </style>
+    <style name="circlepw_caption2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/geist_regular</item>
+    </style>
+    <style name="circlepw_metadata1">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/geist_regular</item>
+    </style>
+    <style name="circlepw_actionText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/geist_semibold</item>
+    </style>
+    <style name="circlepw_pinDigitText">
+        <item name="android:textSize">40sp</item>
+        <item name="android:fontFamily">@font/geist_bold</item>
+    </style>
+    <style name="circlepw_mainButtonText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/geist_semibold</item>
+    </style>
+    <style name="circlepw_secondButtonText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/geist_semibold</item>
+    </style>
+    <style name="circlepw_plainButtonText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/geist_semibold</item>
+    </style>
+    <style name="circlepw_toolbarTitle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/geist_bold</item>
+    </style>
+    <style name="circlepw_otpHeadText">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/geist_bold</item>
+    </style>
+
+    <style name="circlepw_datePicker" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/circlepw_text_action</item>
+        <item name="colorControlActivated">@color/circlepw_text_action</item>
+        <item name="android:windowBackground">@color/circlepw_background</item>
+        <item name="android:textColorPrimary">@color/circlepw_text_main</item>
+        <item name="android:textColorSecondary">@color/circlepw_text_auxiliary</item>
+    </style>
+</resources>

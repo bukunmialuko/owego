@@ -1,0 +1,126 @@
+[
+  {
+    "name": "United States Dollar",
+    "code": "USD",
+    "country_code": "US",
+    "continent": "North America",
+    "symbol": "$",
+    "payment_method": "zelle",
+    "min_amount": 1000,
+    "max_amount": 4000
+  },
+  {
+    "name": "Nigerian Naira",
+    "code": "NGN",
+    "country_code": "NG",
+    "continent": "Africa",
+    "symbol": "₦",
+    "payment_method": "bank",
+    "min_amount": 50,
+    "max_amount": 2000000
+  },
+  {
+    "name": "West African Franc",
+    "code": "XOF",
+    "country_code": "CI",
+    "continent": "Africa",
+    "symbol": "",
+    "payment_method": "mobile_money",
+    "min_amount": 50,
+    "max_amount": 150000
+  },
+  {
+    "name": "Kenyan Shilling",
+    "code": "KES",
+    "country_code": "KE",
+    "continent": "Africa",
+    "symbol": "KSh",
+    "payment_method": "mobile_money",
+    "min_amount": 50,
+    "max_amount": 150000
+  },
+  {
+    "name": "Vietnamese Dong",
+    "code": "VND",
+    "country_code": "VN",
+    "continent": "Asia",
+    "symbol": "₫",
+    "payment_method": "qr_scan",
+    "min_amount": 10000,
+    "max_amount": 9500000
+  },
+  {
+    "name": "Philippine Peso",
+    "code": "PHP",
+    "country_code": "PH",
+    "continent": "Asia",
+    "symbol": "₱",
+    "payment_method": "qr_scan",
+    "min_amount": 1,
+    "max_amount": 36500
+  },
+  {
+    "name": "Cambodian Riel",
+    "code": "KHR",
+    "country_code": "KH",
+    "continent": "Asia",
+    "symbol": "៛",
+    "payment_method": "qr_scan",
+    "min_amount": 400,
+    "max_amount": 2600000
+  },
+  {
+    "name": "Indonesian Rupiah",
+    "code": "IDR",
+    "country_code": "ID",
+    "continent": "Asia",
+    "symbol": "Rp",
+    "payment_method": "qr_scan",
+    "min_amount": 1000,
+    "max_amount": null,
+    "coming_soon": false
+  },
+  {
+    "name": "Thai Baht",
+    "code": "THB",
+    "country_code": "TH",
+    "continent": "Asia",
+    "symbol": "฿",
+    "payment_method": "qr_scan",
+    "min_amount": 1,
+    "max_amount": 22500,
+    "coming_soon": false
+  },
+  {
+    "name": "Brazilian Real",
+    "code": "BRL",
+    "country_code": "BR",
+    "continent": "South America",
+    "symbol": "R$",
+    "payment_method": "qr_scan",
+    "min_amount": 0.6,
+    "max_amount": 3300,
+    "coming_soon": false
+  },
+  {
+    "name": "Argentine Peso",
+    "code": "ARS",
+    "country_code": "AR",
+    "continent": "South America",
+    "symbol": "AR$",
+    "payment_method": "qr_scan",
+    "min_amount": 175,
+    "max_amount": 950000,
+    "coming_soon": false
+  },
+  {
+    "name": "Colombian Peso",
+    "code": "COP",
+    "country_code": "CO",
+    "continent": "South America",
+    "symbol": "COL$",
+    "payment_method": "qr_scan",
+    "min_amount": 50,
+    "max_amount": 2500000
+  }
+]

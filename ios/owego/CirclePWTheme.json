@@ -1,0 +1,75 @@
+{
+  "font": {
+    "ultraLight": "",
+    "thin": "",
+    "light": "",
+    "regular": "Geist-Regular",
+    "medium": "Geist-Medium",
+    "semibold": "Geist-SemiBold",
+    "bold": "Geist-Bold",
+    "heavy": "",
+    "black": ""
+  },
+
+  "color": {
+    "background": "#0D0F11",
+    "divider": "#252A30",
+    "success": "#0B9C4A",
+    "error": "#FF6584",
+    "error_background": "#1C2126",
+
+    "text_main": "#FFFFFF",
+    "text_main2": "#FFFFFF",
+    "text_auxiliary": "#9E9FA0",
+    "text_auxiliary2": "#9E9FA0",
+    "text_summary": "#FFFFFF",
+    "text_summary_highlight": "#6172F3",
+    "text_placeholder": "#9E9FA0",
+    "text_action": "#6172F3",
+    "text_action_pressed": "#6172F3",
+    "text_prompt": "#FFFFFF",
+    "text_prompt2": "#9E9FA0",
+    "text_exchange": "#9E9FA0",
+    "text_interactive": "#6172F3",
+    "text_sign_url": "#9E9FA0",
+
+    "pin_dot_base": "#161A1E",
+    "pin_dot_base_border": "#252A30",
+    "pin_dot_activated": "#6172F3",
+    "pin_dot_focused": "#6172F3",
+    "pin_digit_activated": "#FFFFFF",
+
+    "input_border": "#252A30",
+    "input_border_focused": "#6172F3",
+    "input_background_disabled": "#161A1E",
+
+    "main_bt_text": "#000000",
+    "main_bt_text_pressed": "#000000",
+    "main_bt_text_disabled": "#9E9FA0",
+    "main_bt_background": "#FCFCFD",
+    "main_bt_background_pressed": "#E5E5E5",
+    "main_bt_background_disabled": "#252A30",
+
+    "second_bt_text": "#FCFCFD",
+    "second_bt_border": "#FCFCFD",
+    "second_bt_background": "#161A1E",
+    "second_bt_background_pressed": "#252A30",
+
+    "plain_bt_text": "#FCFCFD",
+    "plain_bt_background": "#161A1E",
+    "plain_bt_background_pressed": "#252A30",
+
+    "recover_pin_hint_title": "#FFFFFF",
+    "recover_pin_hint_title_bg": "#1C2126",
+    "recover_pin_hint": "#6172F3",
+
+    "security_confirm_main_bg": "#1C2126",
+
+    "tip_text": "#FFFFFF",
+    "tip_background": "#1C2126",
+
+    "interactive_background": "#0D0F11",
+
+    "title_gradients": ["#6172F3", "#6172F3"]
+  }
+}

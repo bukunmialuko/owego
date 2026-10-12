@@ -1,0 +1,117 @@
+source 'https://github.com/circlefin/w3s-ios-sdk.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+# Resolve react_native_pods.rb with node to allow for hoisting
+require Pod::Executable.execute_command('node', ['-p',
+  'require.resolve(
+    "react-native/scripts/react_native_pods.rb",
+    {paths: [process.argv[1]]},
+  )', __dir__]).strip
+
+require File.join(
+  File.dirname(Pod::Executable.execute_command('node', ['-p',
+    'require.resolve(
+      "expo/package.json",
+      {paths: [process.argv[1]]},
+    )', __dir__]).strip),
+  'scripts/autolinking'
+)
+
+ENV['RCT_USE_PREBUILT_RNCORE'] = '0'
+
+platform :ios, '16.4'
+prepare_react_native_project!
+
+$RNFirebaseDisableSPM = true
+
+project 'owego', {
+  'Debug' => :debug,
+  'Release' => :release,
+  'Debug-Dev' => :debug,
+  'Release-Dev' => :release,
+  'Debug-Stg' => :debug,
+  'Release-Stg' => :release,
+}
+
+$DiditSdkIosVariant = 'autodetection'
+
+didit_sdk_ios_pod = case $DiditSdkIosVariant
+                    when 'all'
+                      'DiditSDK/All'
+                    when 'core'
+                      'DiditSDK/Core'
+                    when 'autodetection'
+                      'DiditSDK/AutoDetection'
+                    when 'nfc'
+                      'DiditSDK/NFC'
+                    else
+                      raise "Invalid $DiditSdkIosVariant '#{$DiditSdkIosVariant}'. Supported values: all, core, autodetection, nfc."
+                    end
+
+didit_sdk_ios_podspec = 'https://raw.githubusercontent.com/didit-protocol/sdk-ios/4.7.2/DiditSDK.podspec'
+
+target 'owego' do
+  use_expo_modules!
+
+  config = use_native_modules!
+
+  use_frameworks! :linkage => :static
+
+  $RNFirebaseAsStaticFramework = true
+
+  dynamic_frameworks = ['GoogleSignIn', 'FBSDKLoginKit', 'AppAuth', 'GTMAppAuth', 'GTMSessionFetcher']
+
+  pre_install do |installer|
+    installer.pod_targets.each do |pod_target|
+      if dynamic_frameworks.include?(pod_target.name)
+        def pod_target.build_type
+          Pod::BuildType.dynamic_framework
+        end
+      end
+    end
+  end
+
+  pod 'GoogleUtilities', :modular_headers => true
+  pod 'RecaptchaInterop', :modular_headers => true
+
+  pod didit_sdk_ios_pod, :podspec => didit_sdk_ios_podspec
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    # An absolute path to your application root.
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+  post_install do |installer|
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false,
+      # :ccache_enabled => true
+    )
+
+    installer.pods_project.targets.each do |pod_target|
+      pod_target.build_configurations.each do |config|
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '16.4'
+      end
+    end
+
+    quote_expo_constants_script_path(installer)
+  end
+end
+
+def quote_expo_constants_script_path(installer)
+  target = installer.pods_project.targets.find { |t| t.name == 'EXConstants' }
+  return if target.nil?
+
+  target.shell_script_build_phases.each do |phase|
+    next unless phase.shell_script.include?('$PODS_TARGET_SRCROOT/../scripts')
+
+    phase.shell_script = phase.shell_script.gsub(
+      '$PODS_TARGET_SRCROOT/../scripts',
+      "'$PODS_TARGET_SRCROOT'/../scripts",
+    )
+  end
+
+  installer.pods_project.save
+end

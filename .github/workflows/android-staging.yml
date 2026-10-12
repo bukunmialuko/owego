@@ -1,0 +1,29 @@
+name: Android · Staging → Firebase
+
+on:
+  push:
+    branches: ['release/v2.0.x']
+  workflow_dispatch:
+
+concurrency:
+  group: android-staging
+  cancel-in-progress: false
+
+jobs:
+  release:
+    uses: ./.github/workflows/android-release.yml
+    with:
+      environment: staging
+    secrets:
+      PWSDK_MAVEN_URL: ${{ secrets.PWSDK_MAVEN_URL }}
+      PWSDK_MAVEN_USERNAME: ${{ secrets.PWSDK_MAVEN_USERNAME }}
+      PWSDK_MAVEN_PASSWORD: ${{ secrets.PWSDK_MAVEN_PASSWORD }}
+      ANDROID_UPLOAD_KEYSTORE_BASE64: ${{ secrets.ANDROID_UPLOAD_KEYSTORE_BASE64 }}
+      ANDROID_KEYSTORE_ALIAS: ${{ secrets.ANDROID_KEYSTORE_ALIAS }}
+      ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+      ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}
+      ENV_FILE_BASE64: ${{ secrets.ENV_FILE_STAGING_BASE64 }}
+      FIREBASE_JSON_BASE64: ${{ secrets.FIREBASE_JSON_STAGING_BASE64 }}
+      FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID_STAGING }}
+      FASTLANE_GOOGLE_SERVICE_ACCOUNT_JSON_BASE64: ${{ secrets.FASTLANE_GOOGLE_SERVICE_ACCOUNT_JSON_BASE64 }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

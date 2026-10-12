@@ -1,0 +1,20 @@
+msg="$1"
+tmp="$msg.strip"
+
+awk '
+  {
+    l = tolower($0)
+    sub(/^[ \t]+/, "", l)
+    if (l ~ /^co-authored-by:.*(claude|anthropic)/) next
+    if (l ~ /^claude-session:/) next
+    if (l ~ /generated with \[claude code\]/) next
+    lines[++n] = $0
+  }
+  END {
+    while (n > 0 && lines[n] ~ /^[ \t]*$/) n--
+    for (i = 1; i <= n; i++) print lines[i]
+  }
+' "$msg" > "$tmp"
+mv "$tmp" "$msg"
+
+npx --no -- commitlint --edit "$msg"

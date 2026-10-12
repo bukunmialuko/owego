@@ -1,0 +1,103 @@
+name: iOS release (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: staging or production — selects the scheme, the .env file and the App Store record
+        required: true
+        type: string
+    secrets:
+      ENV_FILE_BASE64: { required: true }
+      FIREBASE_PLIST_BASE64: { required: true }
+      FASTLANE_APP_STORE_CONNECT_API_KEY_JSON_BASE64: { required: true }
+      FASTLANE_MATCH_PASSWORD: { required: true }
+      FASTLANE_GITHUB_BASIC_AUTHORIZATION: { required: true }
+      SLACK_WEBHOOK_URL: { required: false }
+
+jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
+
+  release:
+    needs: verify
+    runs-on: xcode-27
+    timeout-minutes: 120
+    env:
+      MATCH_PASSWORD: ${{ secrets.FASTLANE_MATCH_PASSWORD }}
+      MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.FASTLANE_GITHUB_BASIC_AUTHORIZATION }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    steps:
+      - name: Check inputs
+        run: |
+          case "${{ inputs.environment }}" in
+            staging|production) ;;
+            *) echo "::error::environment must be staging or production"; exit 1 ;;
+          esac
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true
+
+      - name: Toolchain
+        run: |
+          xcodebuild -version
+          bundle exec pod --version
+
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ios/Pods
+            ~/Library/Caches/CocoaPods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
+
+      - name: Materialise secrets
+        env:
+          ENVIRONMENT: ${{ inputs.environment }}
+          ENV_FILE_BASE64: ${{ secrets.ENV_FILE_BASE64 }}
+          FIREBASE_PLIST_BASE64: ${{ secrets.FIREBASE_PLIST_BASE64 }}
+          FASTLANE_APP_STORE_CONNECT_API_KEY_JSON_BASE64: ${{ secrets.FASTLANE_APP_STORE_CONNECT_API_KEY_JSON_BASE64 }}
+        run: |
+          set -euo pipefail
+          umask 077
+
+          decode() {
+            if [ -z "${!1:-}" ]; then
+              echo "::error::secret $1 is empty"
+              exit 1
+            fi
+            printf '%s' "${!1}" | base64 -d > "$2"
+          }
+
+          decode FASTLANE_APP_STORE_CONNECT_API_KEY_JSON_BASE64 "$RUNNER_TEMP/app-store-connect-api-key.json"
+          decode ENV_FILE_BASE64 ".env.$ENVIRONMENT"
+          decode FIREBASE_PLIST_BASE64 "ios/flavors/$ENVIRONMENT/GoogleService-Info.plist"
+
+          echo "FASTLANE_APP_STORE_CONNECT_API_KEY_JSON=$RUNNER_TEMP/app-store-connect-api-key.json" >> "$GITHUB_ENV"
+
+      - run: npm run ios:pods
+
+      - name: Build and ship ${{ inputs.environment }}
+        run: npm run ios:deploy:${{ inputs.environment == 'production' && 'prod' || 'stg' }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: owego-ios-${{ inputs.environment }}
+          path: dist/ios/*
+          if-no-files-found: warn
+          retention-days: ${{ inputs.environment == 'production' && 30 || 14 }}

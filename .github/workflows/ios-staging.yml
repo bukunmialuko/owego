@@ -1,0 +1,23 @@
+name: iOS · Staging → TestFlight
+
+on:
+  push:
+    branches: ['release/v2.0.x']
+  workflow_dispatch:
+
+concurrency:
+  group: ios-staging
+  cancel-in-progress: false
+
+jobs:
+  release:
+    uses: ./.github/workflows/ios-release.yml
+    with:
+      environment: staging
+    secrets:
+      ENV_FILE_BASE64: ${{ secrets.ENV_FILE_STAGING_BASE64 }}
+      FIREBASE_PLIST_BASE64: ${{ secrets.FIREBASE_PLIST_STAGING_BASE64 }}
+      FASTLANE_APP_STORE_CONNECT_API_KEY_JSON_BASE64: ${{ secrets.FASTLANE_APP_STORE_CONNECT_API_KEY_JSON_BASE64 }}
+      FASTLANE_MATCH_PASSWORD: ${{ secrets.FASTLANE_MATCH_PASSWORD }}
+      FASTLANE_GITHUB_BASIC_AUTHORIZATION: ${{ secrets.FASTLANE_GITHUB_BASIC_AUTHORIZATION }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

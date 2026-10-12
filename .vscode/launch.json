@@ -1,0 +1,64 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "[STG] OBKM",
+      "type": "reactnativedirect",
+      "request": "attach",
+      "cwd": "${workspaceFolder}",
+      "port": 8081,
+      "preLaunchTask": "owego: run [STG] OBKM"
+    },
+    {
+      "name": "[STG] RN Android",
+      "type": "reactnativedirect",
+      "request": "attach",
+      "cwd": "${workspaceFolder}",
+      "port": 8081,
+      "preLaunchTask": "owego: build [STG] RN Android"
+    },
+    {
+      "name": "[STG] RN iOS",
+      "type": "reactnativedirect",
+      "request": "attach",
+      "cwd": "${workspaceFolder}",
+      "port": 8081,
+      "preLaunchTask": "owego: build [STG] RN iOS"
+    },
+    {
+      "name": "[PROD] RN Android",
+      "type": "reactnativedirect",
+      "request": "attach",
+      "cwd": "${workspaceFolder}",
+      "port": 8081,
+      "preLaunchTask": "owego: build [PROD] RN Android"
+    },
+    {
+      "name": "Attach to Hermes (iOS / Android)",
+      "type": "reactnativedirect",
+      "request": "attach",
+      "cwd": "${workspaceFolder}",
+      "port": 8081
+    },
+    {
+      "name": "Debug tests",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand", "--watchAll=false"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Debug current test file",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["--runInBand", "--watchAll=false", "${relativeFile}"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    }
+  ]
+}
