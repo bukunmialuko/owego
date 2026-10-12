@@ -23,7 +23,9 @@ transfer is confirmed with the wallet PIN.
 
 ## Screenshots
 
-_to be added_ <!-- FILL-IN: three or four screenshots, saved in docs/screenshots/ -->
+|                                                       Home                                                        |                                                   Scan to Pay                                                   |                                                  Send                                                  |                                                  Yield                                                  |
+| :---------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------: |
+| <img src="docs/screenshots/01-home.png" width="200" alt="Home screen with the balance and recent transactions" /> | <img src="docs/screenshots/02-scan-to-pay.png" width="200" alt="Scan to Pay asking to confirm the recipient" /> | <img src="docs/screenshots/03-send.png" width="200" alt="Send screen with the currency picker open" /> | <img src="docs/screenshots/04-yield.png" width="200" alt="Yield screen with a USDC vault on Jupiter" /> |
 
 ## Features
 
