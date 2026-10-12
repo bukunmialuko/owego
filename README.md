@@ -17,7 +17,7 @@ transfer is confirmed with the wallet PIN.
 
 | Resource   | Link                                            |
 | ---------- | ----------------------------------------------- |
-| Demo video | _to be added_ <!-- FILL-IN: demo video URL -->  |
+| Demo video | <https://www.youtube.com/watch?v=uhEeEHyQiWU>   |
 | Website    | <https://www.owego.app/>                        |
 | Contact    | [ashley.o@owego.app](mailto:ashley.o@owego.app) |
 
@@ -55,6 +55,7 @@ _to be added_ <!-- FILL-IN: three or four screenshots, saved in docs/screenshots
 - [ ] Referrals: screens built, backend not wired
 - [ ] Investments in the Wealth tab
 - [ ] Fiat deposits: bank transfer, card, Apple Pay and Google Pay, Cash App, PayPal
+- [ ] Statements
 - [ ] Virtual cards
 
 A feature is listed as working when it is wired to the backend or to the vendor SDK. Unfinished
